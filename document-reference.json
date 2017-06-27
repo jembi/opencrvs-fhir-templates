@@ -1,0 +1,42 @@
+{
+  "resourceType": "DocumentReference",
+  "masterIdentifier": {
+    "system": "urn:ietf:rfc:3986",
+    "value": "{{urn_uuid}}"
+  },
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": {
+      "system": "http://opencrvs.org/doc-types",
+      "code": "birth-notification" // birth-notification | birth-declaration
+    },
+    "text": "Birth Notification" // Birth Notification | Birth Declaration
+  },
+  "class": {
+    "coding": {
+      "system": "http://opencrvs.org/doc-classes",
+      "code": "crvs-document"
+    },
+    "text": "CRVS Document"
+  },
+  "subject": {
+    "reference": "Patient/xyz"
+  },
+  "created": "{{currentDate}}",
+  "indexed": "{{currentDate}}",
+  "author": [
+    {
+    "reference": "Practitioner/xyz"
+    }
+  ],
+  "content": {
+    "attachment": {
+      "contentType": "application/fhir+json",
+      "url": "Binary/xyz",
+      "hash": "{{documentHash}}",
+      "title": "CBS event report",
+      "creation": "{{currentDate}}"
+    }
+  }
+}

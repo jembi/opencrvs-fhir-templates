@@ -1,0 +1,192 @@
+{
+  "resourceType": "Bundle",
+  "type": "document",
+  "meta": {
+    "lastUpdated": "{{bundledDate}}"
+  },
+  "entry": [
+    {
+      "resource": {
+        "identifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "{{urn_uuid}}"
+        },
+        "resourceType": "Composition",
+        "status": "final",
+        "type": {
+          "coding": {
+            "system": "http://opencrvs.org/doc-types",
+            "code": "birth-notification" // birth-notification | birth-declaration
+          },
+          "text": "Birth Notification" // Birth Notification | Birth Declaration
+        },
+        "class": {
+          "coding": {
+            "system": "http://opencrvs.org/doc-classes",
+            "code": "crvs-document"
+          },
+          "text": "CRVS Document"
+        },
+        "subject": {
+          "reference": "Patient/xyz"
+        },
+        "date": "{{logicalCompositionDate}}",
+        "author": [
+          {
+          "reference": "Practitioner/xyz"
+          }
+        ],
+        "title": "Birth Notification", // Birth Notification | Birth Declaration
+        "section": [
+          // For both
+          {
+            "title": "Mother's details",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/doc-sections",
+                "code": "mother-details"
+              },
+              "text": "Mother's details"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to Patient resource contained below
+              }
+            ]
+          },
+          {
+            "title": "Father's details",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/doc-sections",
+                "code": "father-details"
+              },
+              "text": "Father's details"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to Patient resource contained below
+              }
+            ]
+          },
+          {
+            "title": "Location",
+            "code": {
+              "coding": {
+                "system": "http://loinc.org",
+                "code": "80412-0"
+              },
+              "text": "Encounter location"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to Location resource contained below
+              }
+            ]
+          },
+
+          // Additional sections for birth Declaration
+          {
+            "title": "Child details",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/doc-sections",
+                "code": "child-details"
+              },
+              "text": "Child details"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to Patient resource contained below
+              },
+              {
+                "reference": "urn:uuid:xxx" // reference to Patient resource contained below
+              }
+            ]
+          },
+          {
+            "title": "Birth Encounter",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/doc-sections",
+                "code": "birth-encounter"
+              },
+              "text": "Birth encounter"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to Encounter resource contained below, the encounter may have zero or more observations attached to it
+              }
+            ]
+          },
+          {
+            "title": "Scanned documents",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/doc-sections",
+                "code": "scanned-documents"
+              },
+              "text": "Scanned documents"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to a Binary resource contained below
+              },
+              {
+                "reference": "urn:uuid:xxx" // reference to a Binary resource contained below
+              },
+              {
+                "reference": "urn:uuid:xxx" // reference to a Binary resource contained below
+              }
+            ]
+          }
+        ]
+      }
+    },
+
+    // The encounter template
+    {
+      "fullUrl": "urn:uuid:<uuid>", // use this to refer to the resource before it's created
+      "resource": {
+        "resourceType": "Encounter",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/v3/ActCode",
+          "code": "OBS",
+          "display": "Obstetrics"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://opencrvs.org/encounter-type",
+                "code": "birth-encounter",
+                "display": "Birth Encounter"
+              }
+            ]
+          }
+        ],
+        "period": {
+          "start": "",
+          "end": ""
+        },
+        "location": [
+          {
+            "location": {
+              "display": ""
+            }
+          }
+        ],
+        "subject": {
+          "reference": "Patient/xyz"
+        }
+      }
+    }
+  ]
+}
