@@ -43,3 +43,14 @@ This can be represented in a FHIR document of type Birth Declaration with the fo
 * Patient resource for child/ren details
 * Encounter w/ Location and Observations for clinical form fields from the birth encounter
 * Binary resources for scanned images/pdfs
+
+## API interface
+
+* Create session `POST api/session` with `{ email: '', password: '' }`, returns JWT token with authorization data embedded
+* Submit notification `POST fhir/` with FHIR transaction bundle as described above, returns with FHIR operation outcome
+* Query pending notification `GET fhir/Composition?...`, return a Bundle of Compositions (This links to the other other resources in the notification)
+* Update notification `PUT fhir/<resourceType>/<id>`, return 200
+* Submit preliminary declaration `POST /fhir` with FHIR transaction bundle as described above, returns with FHIR operation outcome
+* Query declaration `GET fhir/Composition?...`, return Bundle of Composition (This links to the other other resources in the declaration)
+* Update declaration `PUT fhir/<resourceType>/<id>`, return 200
+* Generate certificate `GET api/certificate/<compositionId>`, return FHIR Binary resource with image or pdf content
