@@ -1,6 +1,6 @@
 # OpenCRVS FHIR Templates
 
-To store a CRVS event we send a **[FHIR transaction bundle](mhd-transaction.json)** (this conforms too the Mobile Health Document profile) to Hearth containing 3 things along with some optional resources:
+To store a CRVS event we send a **[FHIR transaction bundle](mhd-transaction.json)** (this conforms to the Mobile Health Document profile) to Hearth containing 3 things along with some optional resources:
 
   1. **The document manifest** - describes the purpose of the document and it's context (links to patient, practitioner etc)
   2. **The document reference** (referenced by the document mainfest) - describes where to find the document, the `content.attachment.url` property will reference the binary reference below
