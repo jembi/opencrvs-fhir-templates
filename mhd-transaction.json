@@ -1,0 +1,97 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    // Document Manifest - describes document type and status
+    {
+      "fullUrl": "urn:uuid:xxx",
+      "resource": {
+        "resourceType": "DocumentManifest",
+        "masterIdentifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "{{urn_uuid}}"
+        },
+        "status": "current",
+        "type": {
+          "coding": {
+            "system": "http://opencrvs.org/doc-types",
+            "code": "birth-notification" // birth-notification | birth-declaration
+          },
+          "text": "Birth Notification" // Birth Notification | Birth Declaration
+        },
+        "subject": {
+          "reference": "Patient/xyz"
+        },
+        "created": "{{currentDate}}",
+        "author": [
+          {
+          "reference": "Practitioner/xyz"
+          }
+        ],
+        "source": "{{sourceURI}}",
+        "content": [
+          {
+            "pReference": {
+              "reference": "DocumentReference/xyz"
+            }
+          }
+        ]
+      }
+    },
+    // Describes docuemnt format and creation information
+    {
+      "fullUrl": "urn:uuid:xxx",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "masterIdentifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "{{urn_uuid}}"
+        },
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": {
+            "system": "http://opencrvs.org/doc-types",
+            "code": "birth-notification" // birth-notification | birth-declaration
+          },
+          "text": "Birth Notification" // Birth Notification | Birth Declaration
+        },
+        "class": {
+          "coding": {
+            "system": "http://opencrvs.org/doc-classes",
+            "code": "crvs-document"
+          },
+          "text": "CRVS Document"
+        },
+        "subject": {
+          "reference": "Patient/xyz"
+        },
+        "created": "{{currentDate}}",
+        "indexed": "{{currentDate}}",
+        "author": [
+          {
+          "reference": "Practitioner/xyz"
+          }
+        ],
+        "content": {
+          "attachment": {
+            "contentType": "application/fhir+json",
+            "url": "Binary/xyz",
+            "hash": "{{documentHash}}",
+            "title": "CBS event report",
+            "creation": "{{currentDate}}"
+          }
+        }
+      }
+    },
+    // Binary FHIR document - contains base64 encounded FHIR document with all domain information
+    {
+      "fullUrl": "urn:uuid:xxx",
+      "resource": {
+        "resourceType": "Binary",
+        "contentType": "application/fhir+json",
+        "content": "<base64_encoded_fhir-document.json>"
+      }
+    }
+  ]
+}
