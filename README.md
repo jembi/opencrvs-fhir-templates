@@ -51,31 +51,31 @@ See **[fhir-document.json template](fhir-document.json)** for the template. Only
 ## API interface
 
 * **Create session** (custom API)
- * `POST api/sessions/create`
- * with `{ username: '', password: '' }`
- * returns `{ id_token: <jwt>, access_token: <jwt> }`
+  * `POST api/sessions/create`
+  * with `{ username: '', password: '' }`
+  * returns `{ id_token: <jwt>, access_token: <jwt> }`
 * **Submit notification**
- * `POST fhir/`
- * with [FHIR transaction bundle](mhd-transaction.json)
- * returns FHIR operation outcome
+  * `POST fhir/`
+  * with [FHIR transaction bundle](mhd-transaction.json)
+  * returns FHIR operation outcome
 * **Query pending notifications at a particular location**
- * `GET fhir/Composition?status=preliminary&entry=Location/123&type=birth-notification`
- * return a Bundle of Compositions (This links to the other resources in the notification and those can be fetched using `GET fhir/<resourceType>/<id>)
+  * `GET fhir/Composition?status=preliminary&entry=Location/123&type=birth-notification`
+  * return a Bundle of Compositions (This links to the other resources in the notification and those can be fetched using `GET fhir/<resourceType>/<id>`)
 * **Update notification**
- * `PUT fhir/<resourceType>/<id>`
- * return 200
+  * `PUT fhir/<resourceType>/<id>`
+  * return 200
 * **Submit preliminary declaration**
- * `POST /fhir`
- * with [FHIR transaction bundle](mhd-transaction.json)
- * returns FHIR operation outcome
+  * `POST /fhir`
+  * with [FHIR transaction bundle](mhd-transaction.json)
+  * returns FHIR operation outcome
 * **Query declaration**
- * `GET fhir/Composition?status=preliminary&type=birth-declaration`
- * return Bundle of Composition (This links to the other resources in the notification and those can be fetched using `GET fhir/<resourceType>/<id>)
+  * `GET fhir/Composition?status=preliminary&type=birth-declaration`
+  * return Bundle of Composition (This links to the other resources in the notification and those can be fetched using `GET fhir/<resourceType>/<id>`)
 * **Update declaration**
- * `PUT fhir/<resourceType>/<id>`
- * return 200
+  * `PUT fhir/<resourceType>/<id>`
+  * return 200
 * **Generate certificate** (custom API)
- * `GET api/certificate/<compositionId>`
- * return FHIR Binary resource with image or pdf content
+  * `GET api/certificate/<compositionId>`
+  * return FHIR Binary resource with image or pdf content
 
 Note: to track workflow state we may have to use the `Composition.meta.tag` property instead of the `Composition.status` field.
