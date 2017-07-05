@@ -1,0 +1,175 @@
+{
+  "resourceType": "Bundle",
+  "type": "document",
+  "meta": {
+    "lastUpdated": "2012-04-23T18:25:43.511Z"
+  },
+  "entry": [
+    {
+      "resource": {
+        "identifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "urn:uuid:920c372e-52cc-445a-918e-93e4f146e443"
+        },
+        "resourceType": "Composition",
+        "status": "final",
+        "type": {
+          "coding": {
+            "system": "http://opencrvs.org/doc-types",
+            "code": "birth-notification"
+          },
+          "text": "Birth Notification"
+        },
+        "class": {
+          "coding": {
+            "system": "http://opencrvs.org/doc-classes",
+            "code": "crvs-document"
+          },
+          "text": "CRVS Document"
+        },
+        "subject": {
+          "reference": "Patient/xyz"
+        },
+        "date": "2012-04-23T18:25:43.511Z",
+        "author": [
+          {
+          "reference": "Practitioner/xyz"
+          }
+        ],
+        "title": "Birth Notification",
+        "section": [
+          {
+            "title": "Mother's details",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/doc-sections",
+                "code": "mother-details"
+              },
+              "text": "Mother's details"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:0135c3fe-c8ce-42c7-b8ae-2f5409f8ca28"
+              }
+            ]
+          },
+          {
+            "title": "Location",
+            "code": {
+              "coding": {
+                "system": "http://loinc.org",
+                "code": "80412-0"
+              },
+              "text": "Encounter location"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:b991e26c-5049-4012-ad01-3fa1c79f8608"
+              }
+            ]
+          }
+        ]
+      }
+    },
+
+    {
+      "fullUrl": "urn:uuid:0135c3fe-c8ce-42c7-b8ae-2f5409f8ca28",
+      "resource": {
+        "resourceType": "Patient",
+        "active": true,
+        "identifier": [
+          {
+            "use": "official",
+            "system": "",
+            "value": ""
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "prefix": [
+              "Ms"
+            ],
+            "family": [
+              "Matinyana"
+            ],
+            "given": [
+              "Charlton",
+              "Jane"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1970-07-21",
+        "telecom": [
+          {
+            "system": "email",
+            "value": "charlton@email.com"
+          },
+          {
+            "system": "phone",
+            "value": "27831234567",
+            "use": "mobile"
+          }
+        ],
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "2760 Mlosi Street",
+              "Wallacedene",
+              "Kraaifontein"
+            ],
+            "state": "Western Cape",
+            "city": "Cape Town",
+            "postalCode": "7570"
+          }
+        ],
+        "maritalStatus": {
+          "coding": {
+            "system": "http://hl7.org/fhir/ValueSet/marital-status",
+            "code": "M"
+          },
+          "text": "Married"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b991e26c-5049-4012-ad01-3fa1c79f8608",
+      "resource": {
+        "resourceType": "Location",
+        "status": "active",
+        "mode": "instance",
+        "name": "Small Village",
+        "physicalType": {
+          "coding": {
+            "system": "http://hl7.org/fhir/ValueSet/location-physical-type",
+            "code": "area"
+          },
+          "text": "Area"
+        },
+        "position": {
+          "longitude": 18.4392,
+          "latitude": -34.08002
+        }
+      }
+    }
+  ]
+}

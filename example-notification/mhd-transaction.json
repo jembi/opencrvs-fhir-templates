@@ -1,0 +1,106 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:e2e9a64a-0a55-4202-937a-7ab1b4a261ca",
+      "resource": {
+        "resourceType": "DocumentManifest",
+        "masterIdentifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "urn:uuid:db1d5a2f-f538-4f1b-8e1c-871c5b02a283"
+        },
+        "status": "current",
+        "type": {
+          "coding": {
+            "system": "http://opencrvs.org/doc-types",
+            "code": "birth-notification"
+          },
+          "text": "Birth Notification"
+        },
+        "subject": {
+          "reference": "Patient/xyz"
+        },
+        "created": "2012-04-23T18:25:43.511Z",
+        "author": [
+          {
+          "reference": "Practitioner/xyz"
+          }
+        ],
+        "source": "urn:oid:1.2.3.4",
+        "content": [
+          {
+            "pReference": {
+              "reference": "urn:uuid:b741c2cb-3a22-4db7-8850-4399531a29b7"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "DocumentManifest"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b741c2cb-3a22-4db7-8850-4399531a29b7",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "masterIdentifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "urn:uuid:6408ea4f-85e3-4fb6-b781-4a5e4d8389cd"
+        },
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": {
+            "system": "http://opencrvs.org/doc-types",
+            "code": "birth-notification"
+          },
+          "text": "Birth Notification"
+        },
+        "class": {
+          "coding": {
+            "system": "http://opencrvs.org/doc-classes",
+            "code": "crvs-document"
+          },
+          "text": "CRVS Document"
+        },
+        "subject": {
+          "reference": "Patient/xyz"
+        },
+        "created": "2012-04-23T18:25:43.511Z",
+        "indexed": "2012-04-23T18:25:43.511Z",
+        "author": [
+          {
+          "reference": "Practitioner/xyz"
+          }
+        ],
+        "content": {
+          "attachment": {
+            "contentType": "application/fhir+json",
+            "url": "Binary/xyz",
+            "hash": "###",
+            "title": "CBS event report",
+            "creation": "2012-04-23T18:25:43.511Z"
+          }
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "DocumentReference"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:948c303c-85c3-4b81-ab33-7ad82f77fd41",
+      "resource": {
+        "resourceType": "Binary",
+        "contentType": "application/fhir+json",
+        "content": "<base64_encoded_fhir-document.json>"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Binary"
+      }
+    }
+  ]
+}
