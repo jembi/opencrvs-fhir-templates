@@ -268,6 +268,36 @@
       }
     },
 
+    // Example immunization resource
+    {
+      "fullUrl": "",
+      "resource": {
+        "resourceType": "Immunization",
+        "status": "completed",
+        "date": "2013-01-10",
+        "vaccineCode": { // Vaccine product administered
+          "coding": [
+            {
+              "system": "urn:oid:1.2.36.1.2001.1005.17",
+              "code": "FLUVAX"
+            }
+          ],
+          "text": "Fluvax (Influenza)"
+        },
+        "patient": {
+          "reference": "Patient/example"
+        },
+        "wasNotGiven": false, // Required - Flag for whether immunization was given
+        "reported": false, // Required - Indicates a self-reported record
+        "encounter": {
+          "reference": "Encounter/example"
+        },
+        "location": {
+          "reference": "Location/1"
+        }
+      }
+    },
+
     // Example Binary resource for scanned documents
     {
       "fullUrl": "",

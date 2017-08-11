@@ -38,7 +38,7 @@
         ]
       }
     },
-    // Describes docuemnt format and creation information
+    // Describes document format and creation information
     {
       "fullUrl": "urn:uuid:xxx",
       "resource": {
