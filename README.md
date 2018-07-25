@@ -4,18 +4,18 @@ There are two methods to store a CRVS event. One using the MHD profile for FHIR 
 
 ## 1. MHD option
 
-Using this option a new event can be sent by submitting a **[FHIR MHD transaction bundle](mhd-transaction.json)** (this conforms to the Mobile Health Document profile) to Hearth containing 3 things along with some optional resources:
+Using this option a new event can be sent by submitting a **[FHIR MHD transaction bundle](mhd-transaction.jsonc)** (this conforms to the Mobile Health Document profile) to Hearth containing 3 things along with some optional resources:
 
   1. **The document manifest** - describes the purpose of the document and it's context (links to patient, practitioner etc)
   2. **The document reference** (referenced by the document mainfest) - describes where to find the document, the `content.attachment.url` property will reference the binary reference below
   3. **The Binary resource** (referenced by the document reference)
   4. **Any other resources** that are referenced in the bundle link patient
 
-The binary resource will contain a base64 encoded version of the **[fhir-document.json template](fhir-document.json)** depending on the event we are sending. It also contains references to related resources from the document manifest like patient and encounter.
+The binary resource will contain a base64 encoded version of the **[fhir-document.jsonc template](fhir-document.jsonc)** depending on the event we are sending. It also contains references to related resources from the document manifest like patient and encounter.
 
 ## 2. Direct FHIR document submission
 
-Using this option you can submit the FHIR document (E.g. **[fhir-document.json template](fhir-document.json)**) directly to the `/fhir` endpoint and it will be process in the same way as the above except document manifests and document references aren't created and a full binary copy of the submitted document isn't captured for record keeping. This method is useful for a simpler integration where the additional metadata from the MHD profile isn't necessary.
+Using this option you can submit the FHIR document (E.g. **[fhir-document.jsonc template](fhir-document.jsonc)**) directly to the `/fhir` endpoint and it will be process in the same way as the above except document manifests and document references aren't created and a full binary copy of the submitted document isn't captured for record keeping. This method is useful for a simpler integration where the additional metadata from the MHD profile isn't necessary.
 
 ## Document processing
 
@@ -39,7 +39,7 @@ This can be represented in a [FHIR document](https://www.hl7.org/fhir/documents.
 * Patient resource for father details (optional)
 * Location (optional)
 
-See **[fhir-document.json template](fhir-document.json)** for the template. Only the relevent parts of the template apply.
+See **[fhir-document.jsonc template](fhir-document.jsonc)** for the template. Only the relevent parts of the template apply.
 
 ## Birth Declaration
 
@@ -58,7 +58,7 @@ This can be represented in a [FHIR document](https://www.hl7.org/fhir/documents.
 * Encounter w/ Location and Observations for clinical form fields from the birth encounter
 * Binary resources for scanned images/pdfs
 
-See **[fhir-document.json template](fhir-document.json)** for the template. Only the relevent parts of the template apply.
+See **[fhir-document.jsonc template](fhir-document.jsonc)** for the template. Only the relevent parts of the template apply.
 
 # API details
 
@@ -70,7 +70,7 @@ TODO
 
 * **Submit notification**
   * `POST fhir/`
-  * with [FHIR transaction bundle](mhd-transaction.json)
+  * with [FHIR transaction bundle](mhd-transaction.jsonc)
   * returns FHIR operation outcome
 * **Query pending notifications at a particular location**
   * `GET fhir/Composition?status=preliminary&entry=Location/<id>&type=birth-notification`
@@ -84,7 +84,7 @@ TODO
 
 * **Submit preliminary registration**
   * `POST /fhir`
-  * with [FHIR transaction bundle](mhd-transaction.json)
+  * with [FHIR transaction bundle](mhd-transaction.jsonc)
   * returns FHIR operation outcome
   * Note: This will additionally create a default task resource to track the progress of the registration if one doesn't exist.
 * **Query registration list**
