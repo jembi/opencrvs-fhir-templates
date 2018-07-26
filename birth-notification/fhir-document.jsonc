@@ -54,6 +54,9 @@
               }
             ]
           },
+
+          // Aditional details can be given in the same form as in full birth registration. See birth-registration for more details. This is a minimal example.
+
           {
             "title": "Location",
             "code": {
