@@ -13,7 +13,7 @@
         "status": "current",
         "type": {
           "coding": {
-            "system": "http://opencrvs.org/doc-types",
+            "system": "http://opencrvs.org/specs/types",
             "code": "birth-notification"
           },
           "text": "Birth Notification"
@@ -53,14 +53,14 @@
         "docStatus": "final",
         "type": {
           "coding": {
-            "system": "http://opencrvs.org/doc-types",
+            "system": "http://opencrvs.org/specs/types",
             "code": "birth-notification"
           },
           "text": "Birth Notification"
         },
         "class": {
           "coding": {
-            "system": "http://opencrvs.org/doc-classes",
+            "system": "http://opencrvs.org/specs/classes",
             "code": "crvs-document"
           },
           "text": "CRVS Document"

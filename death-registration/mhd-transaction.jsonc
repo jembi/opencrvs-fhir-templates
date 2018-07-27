@@ -14,7 +14,7 @@
         "status": "current",
         "type": {
           "coding": {
-            "system": "http://opencrvs.org/doc-types",
+            "system": "http://opencrvs.org/types",
             "code": "death-notification"
           },
           "text": "Death Notification"
@@ -51,14 +51,14 @@
         "docStatus": "final",
         "type": {
           "coding": {
-            "system": "http://opencrvs.org/doc-types",
+            "system": "http://opencrvs.org/types",
             "code": "death-notification"
           },
           "text": "Death Notification"
         },
         "class": {
           "coding": {
-            "system": "http://opencrvs.org/doc-classes",
+            "system": "http://opencrvs.org/classes",
             "code": "crvs-document"
           },
           "text": "CRVS Document"

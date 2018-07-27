@@ -14,7 +14,7 @@
         "status": "current",
         "type": {
           "coding": {
-            "system": "http://opencrvs.org/specs/doc-types",
+            "system": "http://opencrvs.org/specs/types",
             "code": "birth-registration"
           },
           "text": "Birth Registration"
@@ -51,14 +51,14 @@
         "docStatus": "final", // 'final' when submitted | 'preliminary' when still a draft
         "type": {
           "coding": {
-            "system": "http://opencrvs.org/specs/doc-types",
+            "system": "http://opencrvs.org/specs/types",
             "code": "birth-registration"
           },
           "text": "Birth Registration"
         },
         "class": {
           "coding": {
-            "system": "http://opencrvs.org/specs/doc-classes",
+            "system": "http://opencrvs.org/specs/classes",
             "code": "crvs-document"
           },
           "text": "CRVS Document"

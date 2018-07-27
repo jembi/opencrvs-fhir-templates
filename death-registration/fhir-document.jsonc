@@ -345,15 +345,15 @@
             ]
           },
           {
-            "url": "http://opencrvs.org/specs/date-of-marriage",
+            "url": "http://opencrvs.org/specs/extension/date-of-marriage",
             "valueDateTime": "2014-01-28"
           },
           {
-            "url": "http://opencrvs.org/specs/educational-attainment",
+            "url": "http://opencrvs.org/specs/extension/educational-attainment",
             "valueString": "NO_SCHOOLING | PRIMARY_ISCED_1 | LOWER_SECONDARY_ISCED_2 | UPPER_SECONDARY_ISCED_3 | POST_SECONDARY_ISCED_4 | FIRST_STAGE_TERTIARY_ISCED_5 | SECOND_STAGE_TERTIARY_ISCED_6 | NOT_STATED"
           },
           {
-            "url": "http://opencrvs.org/specs/migrant-status",
+            "url": "http://opencrvs.org/specs/extension/migrant-status",
             "valueString": "FOREIGN_RESIDENT | STUDENT | ASYLUM_SEEKER | RESIDENT | VISITOR | TRANSIENT | REFUGEE | OTHER"
           }
         ],
@@ -448,11 +448,11 @@
         ],
         "extension": [
           {
-            "url": "http://opencrvs.org/specs/regLastUser",
+            "url": "http://opencrvs.org/specs/extension/regLastUser",
             "valueString": "<username>"
           },
           {
-            "url": "http://opencrvs.org/specs/regLastLocation",
+            "url": "http://opencrvs.org/specs/extension/regLastLocation",
             "valueReference": "Location/123"
           }
         ]
