@@ -179,3 +179,7 @@ OpenCRVS uses a GraphQL API to make calling these FHIR endpoint easier for the f
   * `DELETE fhir/<resourceType>/<id>` for all resources referenced in composition
 * user(id: Int!): User
 * role(id: Int!): [UserRole]
+
+## Test scripts
+
+There are a few bash scripts to demonstrate the sending some of the templates. To run these you need to have node installed and have installed this global dependency: `npm install --global strip-json-comments-cli`

@@ -246,7 +246,7 @@
           {
             "use": "official",
             "system": "",
-            "value": "",
+            "value": ""
           }
         ],
         "name": [
@@ -409,7 +409,7 @@
         "content": {
           "attachment": {
             "contentType": "image/jpeg | image/png | application/pdf",
-            "data": "<base64Binary>",
+            "data": "<base64Binary>"
           }
         }
       }
