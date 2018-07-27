@@ -2,7 +2,7 @@
 
 This repository contains the proposed FHIR API for use in the OpenCRVS system. It is a work in progress and will continue to evolve, however, it has reached a level of maturity.
 
-It describes both the sub-set of the FHIR RESTful API that is used (along with a few custom endpoint) as ell as the some FHIR templates that map out the data needed for CRVS birth and death events.
+It describes both the sub-set of the FHIR RESTful API that is used (along with a few custom endpoint) as well as the some FHIR templates that map out the data needed for CRVS birth and death events.
 
 ## Submitting CRVS events
 
@@ -17,7 +17,7 @@ Using this option you can submit the FHIR document (E.g. **[fhir-document.jsonc 
 Using this option a new event can be sent by submitting a **[FHIR MHD transaction bundle](birth-registration/mhd-transaction.jsonc)** (this conforms to the Mobile Health Document profile by IHE) to Hearth containing 3 things along with some optional resources:
 
   1. **The document manifest** - describes the purpose of the document and it's context (links to patient, practitioner etc)
-  2. **The document reference** (referenced by the document mainfest) - describes where to find the document, the `content.attachment.url` property will reference the binary reference below
+  2. **The document reference** (referenced by the document manifest) - describes where to find the document, the `content.attachment.url` property will reference the binary reference below
   3. **The Binary resource** (referenced by the document reference)
   4. **Any other resources** that are referenced in the bundle link patient
 
@@ -25,15 +25,15 @@ The binary resource will contain a base64 encoded version of the **[fhir-documen
 
 ## Document processing
 
-Hearth will process FHIR document submitted both by the MHD methods and the direct submission method and it will store the individual resources listed in those documents induvidually. Those resources are then available using normal FHIR queries and update operations.
+Hearth will process FHIR document submitted both by the MHD methods and the direct submission method and it will store the individual resources listed in those documents individually. Those resources are then available using normal FHIR queries and update operations.
 
 # Data specification
 
-Below we explore the type of data we need to store for each type of event and how they map to FHIR resources. The templates in this repository then expand on this to show how they may be constructed.
+Below we explore the type of data we need to store for each type of event and how they map to FHIR resources. The templates in this repository then expands on this to show how they may be constructed.
 
 ## Birth Notification
 
-This is used to notify the OpenCRVS system that a birth (or death) has occurred somewhere and it should followed up on. This information is not considered formal and is just used so that system can report enough information (such as contact details and location) so they event can be followed up by a CRVS official.
+This is used to notify the OpenCRVS system that a birth (or death) has occurred and it should be followed up on. This information is not considered formal and is just used to report enough information (such as contact details and location) so they event can be followed up by a CRVS official.
 
 Data captured:
 
@@ -51,7 +51,7 @@ See **[fhir-document.jsonc template](birth-notification/fhir-document.jsonc)** f
 
 ## Birth Registration
 
-This is used to formally declare that a birth event has taken place and is used by certified applications thata re allowed to submit such declaration. This starts the process for formal registration of the event. The event will move through a few stages being being fully registered and certified. There stages are declaration, verification, registration and certification. Certification is where the physical certificate is actually produced.
+This is used to formally declare that a birth event has taken place and is used by certified applications that are allowed to submit such a declaration. This starts the process for formal registration of the event. The event will move through a few stages being being fully registered and certified. There stages are declaration, verification, registration and certification. Certification is where the physical certificate is actually produced.
 
 Data captured:
 
@@ -136,7 +136,7 @@ Authorization: bearer <token>
 
 ## GraphQL mapping to FHIR API
 
-OpenCRVS uses a GraphQL API to make calling these FHIR endpoint easier for the frontend web app. This is only to be used by the official OpenCRVS we app. The following is a mapping between the GraphQL queries and mutation from the frontend webapp to corresponding FHIR endpoints.
+OpenCRVS uses a GraphQL API to make calling these FHIR endpoint easier for the frontend web app. This is only to be used by the official OpenCRVS we app. The following is a mapping between the GraphQL queries and mutations from the frontend webapp to corresponding FHIR endpoints.
 
 * createNotification(details: NotificationInput!): Notification!
   * Submit notification - `POST /fhir`
@@ -182,4 +182,4 @@ OpenCRVS uses a GraphQL API to make calling these FHIR endpoint easier for the f
 
 ## Test scripts
 
-There are a few bash scripts to demonstrate the sending some of the templates. To run these you need to have node installed and have installed this global dependency: `npm install --global strip-json-comments-cli`
+There are a few bash scripts to demonstrate the sending some of the templates. To run these you need to have node.js installed and have installed the following global dependency: `npm install --global strip-json-comments-cli`
