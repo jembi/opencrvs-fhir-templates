@@ -14,13 +14,13 @@
         "status": "current",
         "type": {
           "coding": {
-            "system": "http://opencrvs.org/doc-types",
-            "code": "birth-notification" // birth-notification | birth-declaration
+            "system": "http://opencrvs.org/specs/types",
+            "code": "birth-registration"
           },
-          "text": "Birth Notification" // Birth Notification | Birth Declaration
+          "text": "Birth Registration"
         },
         "subject": {
-          "reference": "Patient/xyz"
+          "reference": "Patient/xyz" // A reference to the person being registered
         },
         "created": "{{currentDate}}",
         "author": [
@@ -32,7 +32,7 @@
         "content": [
           {
             "pReference": {
-              "reference": "DocumentReference/xyz"
+              "reference": "DocumentReference/xyz" // A reference to the DocumentReference's fullUrl below
             }
           }
         ]
@@ -48,17 +48,17 @@
           "value": "{{urn_uuid}}"
         },
         "status": "current",
-        "docStatus": "final",
+        "docStatus": "final", // 'final' when submitted | 'preliminary' when still a draft
         "type": {
           "coding": {
-            "system": "http://opencrvs.org/doc-types",
-            "code": "birth-notification" // birth-notification | birth-declaration
+            "system": "http://opencrvs.org/specs/types",
+            "code": "birth-registration"
           },
-          "text": "Birth Notification" // Birth Notification | Birth Declaration
+          "text": "Birth Registration"
         },
         "class": {
           "coding": {
-            "system": "http://opencrvs.org/doc-classes",
+            "system": "http://opencrvs.org/specs/classes",
             "code": "crvs-document"
           },
           "text": "CRVS Document"
@@ -76,7 +76,7 @@
         "content": {
           "attachment": {
             "contentType": "application/fhir+json",
-            "url": "Binary/xyz",
+            "url": "Binary/xyz", // A reference to the Binary resource's fullUrl below
             "hash": "{{documentHash}}",
             "title": "CBS event report",
             "creation": "{{currentDate}}"
@@ -90,7 +90,7 @@
       "resource": {
         "resourceType": "Binary",
         "contentType": "application/fhir+json",
-        "content": "<base64_encoded_fhir-document.json>"
+        "content": "<base64_encoded_fhir-document.jsonc>"
       }
     }
   ]

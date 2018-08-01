@@ -15,14 +15,14 @@
         "status": "final",
         "type": {
           "coding": {
-            "system": "http://opencrvs.org/doc-types",
+            "system": "http://opencrvs.org/specs/types",
             "code": "birth-notification"
           },
           "text": "Birth Notification"
         },
         "class": {
           "coding": {
-            "system": "http://opencrvs.org/doc-classes",
+            "system": "http://opencrvs.org/specs/classes",
             "code": "crvs-document"
           },
           "text": "CRVS Document"
@@ -42,7 +42,7 @@
             "title": "Mother's details",
             "code": {
               "coding": {
-                "system": "http://opencrvs.org/doc-sections",
+                "system": "http://opencrvs.org/specs/sections",
                 "code": "mother-details"
               },
               "text": "Mother's details"
@@ -54,6 +54,9 @@
               }
             ]
           },
+
+          // Aditional details can be given in the same form as in full birth registration. See birth-registration for more details. This is a minimal example as only a small subset of data is expected in a notification.
+
           {
             "title": "Location",
             "code": {
