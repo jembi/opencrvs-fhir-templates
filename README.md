@@ -72,13 +72,15 @@ See **[fhir-document.jsonc template](birth-registration/fhir-document.jsonc)** f
 
 # API details
 
-## Authentication (Disabled for HacKonnect-a-thon)
+## Authentication
 
-Authentication and Authorization for the API is done via JWTs. For external system interfacing with OpenCRVS a JWT token will be issued manually for your application. To use the token each HTTP request made to the API must include the in it's `Authorization` header along with the prefix `bearer` for token type:
+Authentication and Authorization for the API is done via JWTs. For external system interfacing with OpenCRVS a JWT token will be issued manually for your application. To use the token each HTTP request made to the API must include the token in it's `Authorization` header along with the prefix `bearer` for token type:
 
 ```
 Authorization: bearer <token>
 ```
+
+This token will contain restrictions to which endpoints a system can access which the API will enforce.
 
 ## Notification API
 
