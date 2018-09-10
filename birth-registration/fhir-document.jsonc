@@ -474,7 +474,29 @@
           ]
         },
         "effectiveDateTime": "2016-03-28", // same as birthdate
-        "valueString": "BOTH_PARENTS | SELF | STATELESS | REFUGEE | INFORMANT_ONLY | SINGLE_PARENT | TEST | OTHER"
+        "valueString": "BOTH_PARENTS | SELF | INFORMANT_ONLY | MOTHER_ONLY | FATHER_ONLY"
+      }
+    },
+    // Obs - present at birth registration
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the birth encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "present-at-birth-reg",
+              "display": "Present at birth registration"
+            }
+          ]
+        },
+        "effectiveDateTime": "2016-03-28", // same as registration date
+        "valueString": "BOTH_PARENTS | INFORMANT_ONLY | MOTHER_ONLY | FATHER_ONLY | OTHER"
       }
     },
     // Obs - Children born alive to mother
