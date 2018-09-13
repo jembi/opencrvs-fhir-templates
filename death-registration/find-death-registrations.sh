@@ -2,6 +2,7 @@
 
 echo "Finding all death registrations..."
 
-curl -s 'http://46.101.36.211:5001/fhir/Composition?type=death-registration' | jq
+HOST=${1:-http://opencrvs-staging.jembi.org:5001}
+curl -s "${HOST}/fhir/Composition?type=death-registration" | jq
 
 echo -e "\nDone."

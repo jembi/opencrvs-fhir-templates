@@ -2,6 +2,7 @@
 
 echo "Finding all Compositions..."
 
-curl -s 'http://46.101.36.211:5001/fhir/Composition?_count=9999' | jq
+HOST=${1:-http://opencrvs-staging.jembi.org:5001}
+curl -s "${HOST}/fhir/Composition?_count=9999" | jq
 
 echo -e "\nDone."

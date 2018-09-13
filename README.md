@@ -184,4 +184,10 @@ OpenCRVS uses a GraphQL API to make calling these FHIR endpoint easier for the f
 
 ## Test scripts
 
-There are a few bash scripts to demonstrate the sending some of the templates. To run these you need to have node.js installed and have installed the following global dependency: `npm install --global strip-json-comments-cli`
+There are a few bash scripts to demonstrate the sending some of the templates. To run these you need to have node.js installed and have installed the following global dependency: `npm install --global strip-json-comments-cli`.
+
+Each of the script accepts the server to query as the first commandline argument, otherwise they default to the staging server (`http://opencrvs-staging.jembi.org:5001`). E.g.
+
+```sh
+./find-composition.sh http://localhost:5001
+```
