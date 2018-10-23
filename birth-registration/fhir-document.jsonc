@@ -206,7 +206,7 @@
         ],
         "name": [
           {
-            "use": "official",
+            "use": "english",
             "prefix": [
               "Mr"
             ],
@@ -591,10 +591,12 @@
         "status": "current",
         "docStatus": "final", // 'final' when submitted | 'preliminary' when not validated | 'entered-in-error' when deleted
         "type": {
-          "coding": {
-            "system": "http://opencrvs.org/specs/supporting-doc-type",
-            "code": "PASSPORT | NATIONAL_ID | IMMUNISATION_CERTIFICATE | PAPER_FORM | PASSPORT_PHOTO | OTHER"
-          }
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/supporting-doc-type",
+              "code": "PASSPORT | NATIONAL_ID | IMMUNISATION_CERTIFICATE | PAPER_FORM | PASSPORT_PHOTO | OTHER"
+            }
+          ]
         },
         "created": "{{currentDate}}",
         "indexed": "{{currentDate}}",

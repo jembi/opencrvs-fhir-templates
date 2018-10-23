@@ -404,14 +404,20 @@
             "code": "PASSPORT | NATIONAL_ID | IMMUNISATION_CERTIFICATE | PAPER_FORM | PASSPORT_PHOTO | OTHER"
           }
         },
+        "subject": {
+          "reference": "Patient/123", // reference to who this supporting docuemnt is about
+          "display": "MOTHER | FATHER | CHILD | OTHER"
+        },
         "created": "{{currentDate}}",
         "indexed": "{{currentDate}}",
-        "content": {
-          "attachment": {
-            "contentType": "image/jpeg | image/png | application/pdf",
-            "data": "<base64Binary>"
+        "content": [
+          {
+            "attachment": {
+              "contentType": "image/jpeg | image/png | application/pdf",
+              "data": "<base64Binary>"
+            }
           }
-        }
+        ]
       }
     },
 
