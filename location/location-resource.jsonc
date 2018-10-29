@@ -1,0 +1,24 @@
+{
+  "id": "123",
+  "resourceType": "Location",
+  "identifier": [
+    { "system": "http://opencrvs.org/specs/id/a2i-internal-id", "value": "1" },
+    { "system": "http://opencrvs.org/specs/id/bbs-code", "value": "10" }
+  ],
+  "name": "Barisal", // English name
+  "alias": ["বরিশাল"], // Bangla name in element 0
+  "status": "active",
+  "mode": "instance",
+  "partOf": {
+    "reference": "Location/111" // Reference to the admin location that is one level up from this one
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/location-boundary-geojson",
+      "valueAttachment": {
+        "contentType": "application/geo+json",
+        "data": "<base64>" // base64 encoded geoJSON feature object
+      }
+    }
+  ]
+}
