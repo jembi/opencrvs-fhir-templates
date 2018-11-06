@@ -12,6 +12,14 @@
   "partOf": {
     "reference": "Location/111" // Reference to the admin location that is one level up from this one
   },
+  "physicalType": {
+    "coding": [
+      {
+      "code": "jdn",
+      "display": "Jurisdiction"
+      }
+    ]
+  },
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/location-boundary-geojson",

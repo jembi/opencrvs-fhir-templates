@@ -1,0 +1,52 @@
+[
+  // The employees details
+  {
+    "resourceType": "Practitioner",
+    "identifier": [
+      {
+        "use": "official",
+        "system": "",
+        "value": ""
+      }
+    ],
+    "name": [
+      {
+        "use": "english",
+        "prefix": [
+          "Mr"
+        ],
+        "family": [
+          "Matinyana"
+        ],
+        "given": [
+          "Charlton",
+          "Joseph"
+        ]
+      }
+    ],
+    "gender": "male",
+  },
+
+  // The roles which the employee performs
+  {
+    "resourceType": "PractitionerRole",
+    "code": [
+      {
+        "coding": [
+          {
+            "system": "http://opencrvs.org/specs/roles",
+            "code": "FIELD_AGENT | REGISTRATION_CLERK | LOCAL_REGISTRAR | DISTRICT_REGISTRAR | STATE_REGISTRAR | NATIONA_REGISTRAR | SYS_ADMIN | SYS_ADMIN_MGNT"
+          }
+        ]
+      }
+    ],
+    "location": [
+      {
+        "reference": "Location/123"
+      },
+      {
+        "reference": "Location/456"
+      }
+    ]
+  }
+]

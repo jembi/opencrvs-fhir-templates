@@ -1,0 +1,34 @@
+{
+  "id": "123",
+  "resourceType": "Location",
+  "identifier": [
+    { "system": "http://opencrvs.org/specs/id/a2i-internal-id", "value": "1" }
+  ],
+  "name": "Barisal", // English name
+  "alias": ["বরিশাল"], // Bangla name in element 0
+  "status": "active",
+  "mode": "instance",
+  "partOf": {
+    "reference": "Location/111" // Reference to the office this office falls under, if any
+  },
+  "physicalType": {
+    "coding": [
+      {
+      "code": "bu",
+      "display": "Building"
+      }
+    ]
+  },
+  "address": [
+    {
+      "line": [
+        "2760 Mlosi Street",
+        "Wallacedene",
+        "Kraaifontein"
+      ],
+      "state": "Western Cape",
+      "city": "Cape Town",
+      "postalCode": "7570"
+    }
+  ]
+}
