@@ -11,6 +11,14 @@
   "partOf": {
     "reference": "Location/111" // Reference to the office this office falls under, if any
   },
+  "type": {
+    "coding": [
+      {
+        "system": "http://opencrvs.org/specs/location-type",
+        "code": "CRVS_OFFICE"
+      }
+    ]
+  },
   "physicalType": {
     "coding": [
       {
