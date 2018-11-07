@@ -15,8 +15,8 @@
   "type": {
     "coding": [
       {
-        "system": "",
-        "code": ""
+        "system": "http://opencrvs.org/specs/location-type",
+        "code": "ADMIN_STRUCTURE"
       }
     ]
   },
