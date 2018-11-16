@@ -15,25 +15,33 @@
     "coding": [
       {
         "system": "http://opencrvs.org/specs/location-type",
-        "code": "CRVS_OFFICE"
+        "code": "CRVS_OFFICE | HEALTH_FACILITY" // Health facility used to track place of birth or death
       }
     ]
   },
   "physicalType": {
     "coding": [
       {
-      "code": "bu",
-      "display": "Building"
+        "code": "bu",
+        "display": "Building"
       }
     ]
   },
+  "telecom": [
+    {
+      "system": "email",
+      "value": "charlton@email.com"
+    },
+    {
+      "system": "phone",
+      "value": "27831234567",
+      "use": "mobile"
+    }
+  ],
   "address": [
     {
-      "line": [
-        "2760 Mlosi Street",
-        "Wallacedene",
-        "Kraaifontein"
-      ],
+      "line": ["2760 Mlosi Street", "Wallacedene"],
+      "district": "Kraaifontein",
       "state": "Western Cape",
       "city": "Cape Town",
       "postalCode": "7570"
