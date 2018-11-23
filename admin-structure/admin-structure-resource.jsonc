@@ -2,12 +2,17 @@
   "id": "123",
   "resourceType": "Location",
   "identifier": [
-    { "system": "http://opencrvs.org/specs/id/a2i-internal-id", "value": "1" },
-    { "system": "http://opencrvs.org/specs/id/bbs-code", "value": "10" }
+    { "system": "http://opencrvs.org/specs/id/a2i-internal-id", "value": "1" }, // optional Bangladesh identifiers
+    { "system": "http://opencrvs.org/specs/id/bbs-code", "value": "10" }, // optional Bangladesh statistical identifiers
+    {
+      "system": "http://opencrvs.org/specs/id/jurisdiction-type",
+      "value": "division || district || upazila || union || citycorporation || municipality || citycorporationward || municipalityward || cantonment || foreginembassy" // optional Bangladesh statistical identifier
+    }
   ],
   "name": "Barisal", // English name
   "alias": ["বরিশাল"], // Bangla name in element 0
   "status": "active",
+  "description": "division=1&district=2", // Optional description for flexible use - Used in Bangladesh to reference A2I route params
   "mode": "instance",
   "partOf": {
     "reference": "Location/111" // Reference to the admin location that is one level up from this one
@@ -23,8 +28,8 @@
   "physicalType": {
     "coding": [
       {
-      "code": "jdn",
-      "display": "Jurisdiction"
+        "code": "jdn",
+        "display": "Jurisdiction"
       }
     ]
   },
