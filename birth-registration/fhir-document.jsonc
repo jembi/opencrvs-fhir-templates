@@ -33,7 +33,7 @@
         "date": "{{logicalCompositionDate}}", // declaration date
         "author": [
           {
-          "reference": "Practitioner/xyz" // CHW that declared the event
+            "reference": "Practitioner/xyz" // CHW that declared the event
           }
         ],
         "title": "Birth Registration",
@@ -207,16 +207,9 @@
         "name": [
           {
             "use": "english",
-            "prefix": [
-              "Mr"
-            ],
-            "family": [
-              "Matinyana"
-            ],
-            "given": [
-              "Charlton",
-              "Joseph"
-            ]
+            "prefix": ["Mr"],
+            "family": ["Matinyana"],
+            "given": ["Charlton", "Joseph"]
           }
         ],
         "gender": "male",
@@ -237,11 +230,7 @@
           {
             "use": "home",
             "type": "both",
-            "line": [
-              "2760 Mlosi Street",
-              "Wallacedene",
-              "Kraaifontein"
-            ],
+            "line": ["2760 Mlosi Street", "Wallacedene", "Kraaifontein"],
             "state": "Western Cape",
             "city": "Cape Town",
             "postalCode": "7570",
@@ -329,7 +318,10 @@
       "resource": {
         "resourceType": "RelatedPerson",
         "relationship": {
-          "coding": { "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype", "code": "<see url for codes>" }
+          "coding": {
+            "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
+            "code": "<see url for codes>"
+          }
         },
         "patient": {
           "reference": "Patient/123" // reference to child
@@ -585,8 +577,14 @@
           "value": "{{urn_uuid}}"
         },
         "identifier": [
-          { "system": "http://opencrvs.org/specs/id/original-file-name", "value": "scan.pdf" },
-          { "system": "http://opencrvs.org/specs/id/system-file-name", "value": "1234.pdf" }
+          {
+            "system": "http://opencrvs.org/specs/id/original-file-name",
+            "value": "scan.pdf"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/system-file-name",
+            "value": "1234.pdf"
+          }
         ],
         "status": "current",
         "docStatus": "final", // 'final' when submitted | 'preliminary' when not validated | 'entered-in-error' when deleted
@@ -616,17 +614,42 @@
         "resourceType": "Task",
         "status": "requested",
         "identifier": [
-          { "system": "http://opencrvs.org/specs/id/birth-tracking-id", "value": "123" },
-          { "system": "http://opencrvs.org/specs/id/birth-registration-number", "value": "123" },
-          { "system": "http://opencrvs.org/specs/id/paper-form-id", "value": "123" },
-          { "system": "http://opencrvs.org/specs/id/paper-form-page", "value": "123" },
-          { "system": "http://opencrvs.org/specs/id/paper-form-book", "value": "123" }
+          {
+            "system": "http://opencrvs.org/specs/id/birth-tracking-id",
+            "value": "123"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/birth-registration-number",
+            "value": "123"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/paper-form-id",
+            "value": "123"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/paper-form-page",
+            "value": "123"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/paper-form-book",
+            "value": "123"
+          }
         ],
         "businessStatus": {
-          "coding": [ { "system": "http://opencrvs.org/specs/reg-status", "code": "DECLARED | VERIFIED | REGISTERED | CERTIFIED" } ]
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/reg-status",
+              "code": "DECLARED | VERIFIED | REGISTERED | CERTIFIED"
+            }
+          ]
         },
         "code": {
-          "coding": [ { "system": "http://opencrvs.org/specs/types", "code": "birth-registration" } ]
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/types",
+              "code": "birth-registration"
+            }
+          ]
         },
         "focus": {
           "reference": "Composition/123" // the composition encompassing this registration
@@ -643,7 +666,7 @@
         "extension": [
           {
             "url": "http://opencrvs.org/specs/extension/regLastUser",
-            "valueString": "<username>"
+            "valueReference": "Practitioner/123"
           },
           {
             "url": "http://opencrvs.org/specs/extension/regLastLocation",
