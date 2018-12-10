@@ -148,6 +148,20 @@
               }
             ]
           }
+        ],
+        "relatesTo": [
+          {
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/specs/relates-to",
+                "code": "duplicate"
+              },
+              "text": "Duplicate compositions"
+            },
+            "targetReference": {
+              "reference": "Composition/xyz"
+            }
+          }
         ]
       }
     },
