@@ -148,6 +148,14 @@
               }
             ]
           }
+        ],
+        "relatesTo": [
+          {
+            "code": "duplicate",
+            "targetReference": {
+              "reference": "Composition/xyz"
+            }
+          }
         ]
       }
     },
