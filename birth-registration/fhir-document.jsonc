@@ -147,6 +147,26 @@
                 "reference": "urn:uuid:xxx" // reference to a DocumentReference resource contained below
               }
             ]
+          },
+
+          {
+            "title": "Certificates",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/specs/sections",
+                "code": "certificates"
+              },
+              "text": "Certificates"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to a DocumentReference resource contained below
+              },
+              {
+                "reference": "urn:uuid:xxx" // reference to a DocumentReference resource contained below
+              }
+            ]
           }
         ],
         "relatesTo": [
@@ -707,6 +727,74 @@
           "longitude": 18.4392,
           "latitude": -34.08002
         }
+      }
+    },
+
+    // Collected certificates, referenced from Composition section
+    {
+      "fullUrl": "urn:uuid:xxx",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "masterIdentifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "{{urn_uuid}}"
+        },
+        "status": "current",
+        "docStatus": "final", // 'final' when submitted | 'preliminary' when not validated | 'entered-in-error' when deleted
+        "type": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/certificate-type",
+              "code": "BIRTH | DEATH | MARRAIGE | DIVORCE"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://opencrvs.org/specs/extension/collector",
+            "valueReference": "RelatedPerson/123"
+          },
+          {
+            "url": "http://opencrvs.org/specs/extension/hasShowedVerifiedDocument",
+            "valueString": "TRUE | FALSE"
+          },
+          {
+            "url": "http://opencrvs.org/specs/extension/payment",
+            "valueReference": "PaymentReconciliation/123"
+          }
+        ],
+        "created": "{{currentDate}}",
+        "indexed": "{{currentDate}}",
+        "content": {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "<base64Binary>"
+          }
+        }
+      }
+    },
+
+    // Example PaymentReconciliation resource, referenced from certificate(DocumentReference) resource
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "PaymentReconciliation",
+        "status": "active | cancelled | draft | entered-in-error",
+        "identifier": [
+          {
+            "system": "http://opencrvs.org/specs/id/payment-id",
+            "value": "123"
+          }
+        ],
+        "total": 500.0,
+        "outcome": "complete | error | partial",
+        "detail": [
+          {
+            "type": "payment | adjustment | advance",
+            "amount": 500.0,
+            "date": "1970-07-21"
+          }
+        ]
       }
     }
   ]
