@@ -666,11 +666,21 @@
         "extension": [
           {
             "url": "http://opencrvs.org/specs/extension/regLastUser",
-            "valueReference": "Practitioner/123"
+            "valueReference": {
+              "reference": "Practitioner/123"
+            }
           },
           {
             "url": "http://opencrvs.org/specs/extension/regLastLocation",
-            "valueReference": "Location/123"
+            "valueReference": {
+              "reference": "Location/123"
+            }
+          },
+          {
+            "url": "http://opencrvs.org/specs/extension/regLastOffice",
+            "valueReference": {
+              "reference": "Location/123"
+            }
           },
           {
             "url": "http://opencrvs.org/specs/extension/contact-person",
@@ -685,13 +695,37 @@
       "fullUrl": "urn:uuid:<uuid>",
       "resource": {
         "resourceType": "Location",
+        "identifier": [
+          {
+            "system": "http://opencrvs.org/specs/id/a2i-internal-id",
+            "value": "1"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/bbs-code",
+            "value": "04"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/jurisdiction-type",
+            "value": "DISTRICT"
+          }
+        ],
         "status": "active",
         "mode": "instance",
         "name": "{{villageName}}",
+        "alias": ["বরগুনা"],
+        "type": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/location-type",
+              "code": "ADMIN_STRUCTURE | CRVS_OFFICE | HEALTH_FACILITY"
+            }
+          ]
+        },
         "physicalType": {
           "coding": {
             "system": "http://hl7.org/fhir/ValueSet/location-physical-type",
-            "code": "area"
+            "code": "area",
+            "display": "Jurisdiction | Building"
           },
           "text": "Area"
         },
