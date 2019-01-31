@@ -209,7 +209,7 @@
         "location": [
           {
             "location": {
-              "reference": "Location/123"
+              "reference": "Location/123" // A reference to a custom new location where the birth happened
             }
           }
         ],
@@ -475,6 +475,42 @@
         "valueString": "PHYSICIAN | NURSE | NURSE_MIDWIFE | MIDWIFE | OTHER_PARAMEDICAL_PERSONNEL | LAYPERSON | NONE | OTHER"
       }
     },
+    // Obs - other birth attendant - Used for a custom attendant at birth if OTHER is selected above
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the birth encounter
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "other-birth-attendant",
+              "display": "Other birth attendant"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference mother by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as birthdate
+        "valueString": ""
+      }
+    },
     // Obs - birth registration type
     {
       "fullUrl": "urn:uuid:<uuid>",
@@ -517,6 +553,31 @@
         },
         "effectiveDateTime": "2016-03-28", // same as registration date
         "valueString": "BOTH_PARENTS | INFORMANT_ONLY | MOTHER_ONLY | FATHER_ONLY | OTHER"
+      }
+    },
+    // Obs - other present at birth registration - Used for a custom entry if OTHER is selected above
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the birth encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "other-present-at-birth-reg",
+              "display": "Other present at birth registration"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference mother by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as birthdate
+        "valueString": ""
       }
     },
     // Obs - Children born alive to mother
@@ -595,7 +656,7 @@
       }
     },
 
-    // Obs - Place of birth
+    // Obs - Reference to an existing health facility location where birth occured
     {
       "fullUrl": "urn:uuid:<uuid>",
       "resource": {
@@ -608,8 +669,8 @@
           "coding": [
             {
               "system": "http://opencrvs.org/specs/obs-type",
-              "code": "place-of-birth",
-              "display": "Location of place of birth"
+              "code": "health-facility-birth",
+              "display": "Health facility birth location"
             }
           ]
         },
@@ -618,6 +679,32 @@
         },
         "effectiveDateTime": "2016-03-28", // same as birth date
         "valueString": "Location/123" // reference to a location
+      }
+    },
+
+    // Obs - Reference to the birth location type to differentiate between health-facility and custom birth locations
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the birth encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "birth-location-type",
+              "display": "Type of birth location"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference child by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as birth date
+        "valueString": "CURRENT | PERMANENT | BIRTH_PLACE | MILITARY_BASE_OR_CANTONMENT | IDP_CAMP | UNHCR_CAMP | OTHER_HEALTH_INSTITUTION | HOSPITAL | HEALTH_INSTITUTION | PRIVATE_HOME | OTHER"
       }
     },
 
