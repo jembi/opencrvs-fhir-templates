@@ -33,7 +33,7 @@
         "date": "{{logicalCompositionDate}}", // declaration date
         "author": [
           {
-          "reference": "Practitioner/xyz" // CHW that declared the event
+            "reference": "Practitioner/xyz" // CHW that declared the event
           }
         ],
         "title": "Death Registration",
@@ -49,9 +49,6 @@
             },
             "text": "",
             "entry": [
-              {
-                "reference": "urn:uuid:xxx" // reference to a Patient resource contained below, by fullUrl
-              },
               {
                 "reference": "urn:uuid:xxx" // reference to a Patient resource contained below, by fullUrl
               }
@@ -104,27 +101,7 @@
             "text": "",
             "entry": [
               {
-                "reference": "urn:uuid:xxx" // reference to a Patient resource contained below, by fullUrl
-              }
-            ]
-          },
-
-          {
-            "title": "Spouse's details",
-            "code": {
-              "coding": {
-                "system": "http://opencrvs.org/specs/sections",
-                "code": "spouce-details"
-              },
-              "text": "Spouse's details"
-            },
-            "text": "",
-            "entry": [
-              {
-                "reference": "urn:uuid:xxx" // reference to a Patient resource contained below, by fullUrl
-              },
-              {
-                "reference": "urn:uuid:xxx" // reference to a Patient resource contained below, by fullUrl
+                "reference": "urn:uuid:xxx" // reference to a RelatedPerson resource contained below, by fullUrl
               }
             ]
           },
@@ -168,6 +145,14 @@
               }
             ]
           }
+        ],
+        "relatesTo": [
+          {
+            "code": "duplicate",
+            "targetReference": {
+              "reference": "Composition/xyz"
+            }
+          }
         ]
       }
     },
@@ -206,37 +191,12 @@
           }
         ],
         "subject": {
-          "reference": "Patient/xyz" // A reference to the person being registered
+          "reference": "Patient/xyz" // A reference to the deceased person being registered
         }
       }
     },
 
-    // Obs - cause of death
-    {
-      "fullUrl": "urn:uuid:<uuid>",
-      "resource": {
-        "resourceType": "Observation",
-        "status": "final",
-        "context": {
-          "reference": "Encounter/123" // the death encounter
-        },
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "79378-6  ",
-              "display": "Cause of death"
-            }
-          ]
-        },
-        "effectiveDateTime": "2016-03-28",
-        "valueCodeableConcept": {
-          "coding": { "system": "http://hl7.org/fhir/ValueSet/icd-10", "code": "" }
-        }
-      }
-    },
-
-    // Example Patient resource that links to mother, father, deceased or informant details sections - not all fields apply for each
+    // Example Patient resource that links to deceased, mother and father (in the case of foetal death) details - not all fields apply for each
     {
       "fullUrl": "urn:uuid:<uuid>",
       "resource": {
@@ -251,17 +211,10 @@
         ],
         "name": [
           {
-            "use": "official",
-            "prefix": [
-              "Mr"
-            ],
-            "family": [
-              "Matinyana"
-            ],
-            "given": [
-              "Charlton",
-              "Joseph"
-            ]
+            "use": "english",
+            "prefix": ["Mr"],
+            "family": ["Matinyana"],
+            "given": ["Charlton", "Joseph"]
           }
         ],
         "gender": "male",
@@ -282,11 +235,7 @@
           {
             "use": "home",
             "type": "both",
-            "line": [
-              "2760 Mlosi Street",
-              "Wallacedene",
-              "Kraaifontein"
-            ],
+            "line": ["2760 Mlosi Street", "Wallacedene", "Kraaifontein"],
             "state": "Western Cape",
             "city": "Cape Town",
             "postalCode": "7570",
@@ -368,20 +317,22 @@
       }
     },
 
-    // Related Person for mother and father references to deceased
+    // Related Person for informant relationship to deceased
     {
       "fullUrl": "urn:uuid:<uuid>",
       "resource": {
         "resourceType": "RelatedPerson",
         "relationship": {
-          "coding": { "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype", "code": "<see url for codes>" }
+          "coding": {
+            "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
+            "code": "<see url for codes>" // or string for unsupported other
+          }
         },
         "patient": {
           "reference": "Patient/123" // reference to deceased
         }
       }
     },
-
 
     // Supporting documents uploads, referenced from Composition section
     {
@@ -393,8 +344,14 @@
           "value": "{{urn_uuid}}"
         },
         "identifier": [
-          { "system": "http://opencrvs.org/specs/id/original-file-name", "value": "scan.pdf" },
-          { "system": "http://opencrvs.org/specs/id/system-file-name", "value": "1234.pdf" }
+          {
+            "system": "http://opencrvs.org/specs/id/original-file-name",
+            "value": "scan.pdf"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/system-file-name",
+            "value": "1234.pdf"
+          }
         ],
         "status": "current",
         "docStatus": "final", // 'final' when submitted | 'preliminary' when not validated | 'entered-in-error' when deleted
@@ -421,6 +378,141 @@
       }
     },
 
+    // Obs - Reference to an existing health facility location where death occured
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the death encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "health-facility-death",
+              "display": "Health facility death location"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference deceased by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as death date
+        "valueString": "Location/123" // reference to a location
+      }
+    },
+
+    // Obs - Reference to the death location type to differentiate between health-facility and custom death locations
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the death encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "death-location-type",
+              "display": "Type of death location"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference deceased by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as death date
+        "valueString": "CURRENT | PERMANENT | BIRTH_PLACE | MILITARY_BASE_OR_CANTONMENT | IDP_CAMP | UNHCR_CAMP | OTHER_HEALTH_INSTITUTION | HOSPITAL | HEALTH_INSTITUTION | PRIVATE_HOME | OTHER"
+      }
+    },
+
+    // Obs - Manner of death - uncertified
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the death encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "uncertified-manner-of-death",
+              "display": "Uncertified manner of death"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference deceased by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as death date
+        "valueString": " NATURAL_CAUSES | ACCIDENT | SUICIDE | HOMICIDE | UNDETERMINED"
+      }
+    },
+
+    // Obs - Cause of death method
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the death encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "cause-of-death-method",
+              "display": "Cause of death method"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference deceased by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as death date
+        "valueString": " VERBAL_AUTOPSY | MEDICALLY_CERTIFIED"
+      }
+    },
+
+    // Obs - ICD10 Medically Certified Cause of death
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the death encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "79378-6  ",
+              "display": "Cause of death"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference deceased by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as death date
+        "valueCodeableConcept": {
+          "coding": {
+            "system": "http://hl7.org/fhir/ValueSet/icd-10",
+            "code": ""
+          }
+        }
+      }
+    },
+
     // Task resource to hold registration workflow details
     {
       "fullUrl": "urn:uuid:xxx",
@@ -428,17 +520,42 @@
         "resourceType": "Task",
         "status": "requested",
         "identifier": [
-          { "system": "http://opencrvs.org/specs/id/death-tracking-id", "value": "123" },
-          { "system": "http://opencrvs.org/specs/id/death-registration-number", "value": "123" },
-          { "system": "http://opencrvs.org/specs/id/paper-form-id", "value": "123" },
-          { "system": "http://opencrvs.org/specs/id/paper-form-page", "value": "123" },
-          { "system": "http://opencrvs.org/specs/id/paper-form-book", "value": "123" }
+          {
+            "system": "http://opencrvs.org/specs/id/death-tracking-id",
+            "value": "123"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/death-registration-number",
+            "value": "123"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/paper-form-id",
+            "value": "123"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/paper-form-page",
+            "value": "123"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/paper-form-book",
+            "value": "123"
+          }
         ],
         "businessStatus": {
-          "coding": [ { "system": "http://opencrvs.org/specs/reg-status", "code": "DECLARED | VERIFIED | REGISTERED | CERTIFIED" } ]
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/reg-status",
+              "code": "DECLARED | VERIFIED | REGISTERED | CERTIFIED"
+            }
+          ]
         },
         "code": {
-          "coding": [ { "system": "http://opencrvs.org/specs/types", "code": "death-registration" } ]
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/types",
+              "code": "death-registration"
+            }
+          ]
         },
         "focus": {
           "reference": "Composition/123" // the composition encompassing this registration
@@ -455,28 +572,66 @@
         "extension": [
           {
             "url": "http://opencrvs.org/specs/extension/regLastUser",
-            "valueString": "<username>"
+            "valueReference": {
+              "reference": "Practitioner/123"
+            }
           },
           {
             "url": "http://opencrvs.org/specs/extension/regLastLocation",
-            "valueReference": "Location/123"
+            "valueReference": {
+              "reference": "Location/123"
+            }
+          },
+          {
+            "url": "http://opencrvs.org/specs/extension/regLastOffice",
+            "valueReference": {
+              "reference": "Location/123"
+            }
+          },
+          {
+            "url": "http://opencrvs.org/specs/extension/contact-person",
+            "valueString": "MOTHER | FATHER | INFORMANT"
           }
         ]
       }
     },
 
-    // Example Location resource, referenced from death encounter or task resource
+    // Example Location resource, referenced from birth encounter or task resource
     {
       "fullUrl": "urn:uuid:<uuid>",
       "resource": {
         "resourceType": "Location",
+        "identifier": [
+          {
+            "system": "http://opencrvs.org/specs/id/a2i-internal-id",
+            "value": "1"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/bbs-code",
+            "value": "04"
+          },
+          {
+            "system": "http://opencrvs.org/specs/id/jurisdiction-type",
+            "value": "DISTRICT"
+          }
+        ],
         "status": "active",
         "mode": "instance",
         "name": "{{villageName}}",
+        "alias": ["বরগুনা"],
+        "type": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/location-type",
+              "code": "ADMIN_STRUCTURE | CRVS_OFFICE | HEALTH_FACILITY"
+            }
+          ]
+        },
         "physicalType": {
           "coding": {
             "system": "http://hl7.org/fhir/ValueSet/location-physical-type",
-            "code": "area"
+            "code": "area",
+            "display": "Jurisdiction | Building"
           },
           "text": "Area"
         },
@@ -484,6 +639,75 @@
           "longitude": 18.4392,
           "latitude": -34.08002
         }
+      }
+    },
+
+    // Collected certificates, referenced from Composition section
+    {
+      "fullUrl": "urn:uuid:xxx",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "masterIdentifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "{{urn_uuid}}"
+        },
+        "status": "current",
+        "docStatus": "final", // 'final' when submitted | 'preliminary' when not validated | 'entered-in-error' when deleted
+        "description": "",
+        "type": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/certificate-type",
+              "code": "BIRTH | DEATH | MARRAIGE | DIVORCE"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://opencrvs.org/specs/extension/collector",
+            "valueReference": "RelatedPerson/123"
+          },
+          {
+            "url": "http://opencrvs.org/specs/extension/hasShowedVerifiedDocument",
+            "valueString": "TRUE | FALSE"
+          },
+          {
+            "url": "http://opencrvs.org/specs/extension/payment",
+            "valueReference": "PaymentReconciliation/123"
+          }
+        ],
+        "created": "{{currentDate}}",
+        "indexed": "{{currentDate}}",
+        "content": {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "<base64Binary>"
+          }
+        }
+      }
+    },
+
+    // Example PaymentReconciliation resource, referenced from certificate(DocumentReference) resource
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "PaymentReconciliation",
+        "status": "active | cancelled | draft | entered-in-error",
+        "identifier": [
+          {
+            "system": "http://opencrvs.org/specs/id/payment-id",
+            "value": "123"
+          }
+        ],
+        "total": 500.0,
+        "outcome": "complete | error | partial",
+        "detail": [
+          {
+            "type": "payment | adjustment | advance",
+            "amount": 500.0,
+            "date": "1970-07-21"
+          }
+        ]
       }
     }
   ]
