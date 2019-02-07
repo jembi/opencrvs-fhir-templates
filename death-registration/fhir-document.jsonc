@@ -56,40 +56,6 @@
           },
 
           {
-            "title": "Mother's details",
-            "code": {
-              "coding": {
-                "system": "http://opencrvs.org/specs/sections",
-                "code": "mother-details"
-              },
-              "text": "Mother's details"
-            },
-            "text": "",
-            "entry": [
-              {
-                "reference": "urn:uuid:xxx" // reference to a Patient resource contained below, by fullUrl
-              }
-            ]
-          },
-
-          {
-            "title": "Father's details",
-            "code": {
-              "coding": {
-                "system": "http://opencrvs.org/specs/sections",
-                "code": "father-details"
-              },
-              "text": "Father's details"
-            },
-            "text": "",
-            "entry": [
-              {
-                "reference": "urn:uuid:xxx" // reference to a Patient resource contained below, by fullUrl
-              }
-            ]
-          },
-
-          {
             "title": "Informant's details",
             "code": {
               "coding": {
@@ -186,7 +152,7 @@
         "location": [
           {
             "location": {
-              "reference": "Location/123"
+              "reference": "Location/123" // A reference to the location where the death occured
             }
           }
         ],
@@ -378,58 +344,6 @@
       }
     },
 
-    // Obs - Reference to an existing health facility location where death occured
-    {
-      "fullUrl": "urn:uuid:<uuid>",
-      "resource": {
-        "resourceType": "Observation",
-        "status": "final",
-        "context": {
-          "reference": "Encounter/123" // the death encounter
-        },
-        "code": {
-          "coding": [
-            {
-              "system": "http://opencrvs.org/specs/obs-type",
-              "code": "health-facility-death",
-              "display": "Health facility death location"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/123" // reference deceased by fullUrl
-        },
-        "effectiveDateTime": "2016-03-28", // same as death date
-        "valueString": "Location/123" // reference to a location
-      }
-    },
-
-    // Obs - Reference to the death location type to differentiate between health-facility and custom death locations
-    {
-      "fullUrl": "urn:uuid:<uuid>",
-      "resource": {
-        "resourceType": "Observation",
-        "status": "final",
-        "context": {
-          "reference": "Encounter/123" // the death encounter
-        },
-        "code": {
-          "coding": [
-            {
-              "system": "http://opencrvs.org/specs/obs-type",
-              "code": "death-location-type",
-              "display": "Type of death location"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/123" // reference deceased by fullUrl
-        },
-        "effectiveDateTime": "2016-03-28", // same as death date
-        "valueString": "CURRENT | PERMANENT | BIRTH_PLACE | MILITARY_BASE_OR_CANTONMENT | IDP_CAMP | UNHCR_CAMP | OTHER_HEALTH_INSTITUTION | HOSPITAL | HEALTH_INSTITUTION | PRIVATE_HOME | OTHER"
-      }
-    },
-
     // Obs - Manner of death - uncertified
     {
       "fullUrl": "urn:uuid:<uuid>",
@@ -494,8 +408,8 @@
         "code": {
           "coding": [
             {
-              "system": "http://loinc.org",
-              "code": "79378-6  ",
+              "system": "http://hl7.org/fhir/ValueSet/icd-10",
+              "code": "ICD10",
               "display": "Cause of death"
             }
           ]
@@ -590,13 +504,13 @@
           },
           {
             "url": "http://opencrvs.org/specs/extension/contact-person",
-            "valueString": "MOTHER | FATHER | INFORMANT"
+            "valueString": "MOTHER | FATHER | CHILD | INFORMANT"
           }
         ]
       }
     },
 
-    // Example Location resource, referenced from birth encounter or task resource
+    // Example Location resource, referenced from death encounter or task resource
     {
       "fullUrl": "urn:uuid:<uuid>",
       "resource": {
@@ -623,7 +537,7 @@
           "coding": [
             {
               "system": "http://opencrvs.org/specs/location-type",
-              "code": "ADMIN_STRUCTURE | CRVS_OFFICE | HEALTH_FACILITY"
+              "code": "HEALTH_FACILITY | CURRENT | PERMANENT | MILITARY_BASE_OR_CANTONMENT | IDP_CAMP | UNHCR_CAMP | PRIVATE_HOME | OTHER"
             }
           ]
         },

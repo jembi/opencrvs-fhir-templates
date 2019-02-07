@@ -209,7 +209,7 @@
         "location": [
           {
             "location": {
-              "reference": "Location/123" // A reference to a custom new location where the birth happened
+              "reference": "Location/123" // A reference to the location where the birth occured
             }
           }
         ],
@@ -653,58 +653,6 @@
         },
         "effectiveDateTime": "2016-03-28", // same as birthdate
         "valueDateTime": "2014-01-28" // previous birth date
-      }
-    },
-
-    // Obs - Reference to an existing health facility location where birth occured
-    {
-      "fullUrl": "urn:uuid:<uuid>",
-      "resource": {
-        "resourceType": "Observation",
-        "status": "final",
-        "context": {
-          "reference": "Encounter/123" // the birth encounter
-        },
-        "code": {
-          "coding": [
-            {
-              "system": "http://opencrvs.org/specs/obs-type",
-              "code": "health-facility-birth",
-              "display": "Health facility birth location"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/123" // reference child by fullUrl
-        },
-        "effectiveDateTime": "2016-03-28", // same as birth date
-        "valueString": "Location/123" // reference to a location
-      }
-    },
-
-    // Obs - Reference to the birth location type to differentiate between health-facility and custom birth locations
-    {
-      "fullUrl": "urn:uuid:<uuid>",
-      "resource": {
-        "resourceType": "Observation",
-        "status": "final",
-        "context": {
-          "reference": "Encounter/123" // the birth encounter
-        },
-        "code": {
-          "coding": [
-            {
-              "system": "http://opencrvs.org/specs/obs-type",
-              "code": "birth-location-type",
-              "display": "Type of birth location"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/123" // reference child by fullUrl
-        },
-        "effectiveDateTime": "2016-03-28", // same as birth date
-        "valueString": "CURRENT | PERMANENT | BIRTH_PLACE | MILITARY_BASE_OR_CANTONMENT | IDP_CAMP | UNHCR_CAMP | OTHER_HEALTH_INSTITUTION | HOSPITAL | HEALTH_INSTITUTION | PRIVATE_HOME | OTHER"
       }
     },
 
