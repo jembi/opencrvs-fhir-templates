@@ -791,7 +791,7 @@
             "value": "1"
           },
           {
-            "system": "http://opencrvs.org/specs/id/bbs-code",
+            "system": "http://opencrvs.org/specs/id/statistical-code",
             "value": "04"
           },
           {

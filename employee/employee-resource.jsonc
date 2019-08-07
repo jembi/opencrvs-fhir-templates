@@ -12,19 +12,12 @@
     "name": [
       {
         "use": "english",
-        "prefix": [
-          "Mr"
-        ],
-        "family": [
-          "Matinyana"
-        ],
-        "given": [
-          "Charlton",
-          "Joseph"
-        ]
+        "prefix": ["Mr"],
+        "family": ["Matinyana"],
+        "given": ["Charlton", "Joseph"]
       }
     ],
-    "gender": "male",
+    "gender": "male"
   },
 
   // The roles which the employee performs
@@ -35,17 +28,17 @@
         "coding": [
           {
             "system": "http://opencrvs.org/specs/roles",
-            "code": "FIELD_AGENT | REGISTRATION_CLERK | LOCAL_REGISTRAR | DISTRICT_REGISTRAR | STATE_REGISTRAR | NATIONA_REGISTRAR | SYS_ADMIN | SYS_ADMIN_MGNT"
+            "code": "FIELD_AGENT | REGISTRATION_AGENT | LOCAL_REGISTRAR | DISTRICT_REGISTRAR | STATE_REGISTRAR | NATIONA_REGISTRAR | SYS_ADMIN | SYS_ADMIN_MGNT"
           }
         ]
       }
     ],
     "location": [
       {
-        "reference": "Location/123"
+        "reference": "Location/123" // Reference to the CRVS_OFFICE where the user works - mandatory
       },
       {
-        "reference": "Location/456"
+        "reference": "Location/456" // Optional references to further administrative locations relevant to the user's catchment area
       }
     ]
   }
