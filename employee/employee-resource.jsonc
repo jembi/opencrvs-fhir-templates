@@ -12,19 +12,29 @@
     "name": [
       {
         "use": "english",
-        "prefix": [
-          "Mr"
-        ],
-        "family": [
-          "Matinyana"
-        ],
-        "given": [
-          "Charlton",
-          "Joseph"
-        ]
+        "prefix": ["Mr"],
+        "family": ["Matinyana"],
+        "given": ["Charlton", "Joseph"]
       }
     ],
     "gender": "male",
+    "extension": [
+      {
+        "url": "http://opencrvs.org/specs/extension/employee-signature",
+        "valueSignature": {
+          "type": [
+            {
+              "system": "urn:iso-astm:E1762-95:2013",
+              "code": "1.2.840.10065.1.12.1.13",
+              "display": "Review Signature"
+            }
+          ],
+          "when": "2019-08-22T08:43:43.461Z",
+          "contentType": "image/png",
+          "blob": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAvVBMVEVHcExNerVNerVOerZOe7RMe7NNe7ROe7UAAP9PebVLerRQfLNRebVNfLZJbbZNerROdrFNerZNe7VPerVNgLNOe7VPebZOebZVd7tAgL9MebNVgKpNe7dOe7RVVapKdbVOebZOerVOerZNd7NOebaAgIBNfbhOe7ZOebRJgLZNeLdNerRNe7VQerVOerdVgLhOerFPfbVRea5MfLNVcapNeLZVgL9SdrZOe7VPerVmZsxNe7VNebZPebdMerexCT1cAAAAP3RSTlMAYFZzZhtqaAFnLEAmQgdtDUlZaxRyKjsPBDkGPFUDGGV5mR5pAiugpA41d08wLhIXLRMlCUYMHD5aBVM/SkPScFaPAAAAk0lEQVQY033OBw6CQBAF0L/AFpogzS723nu//7FcNKDExMlkk3mZ/Fngt7bF/FwIb6ccPCJwYGFkoAtocDkfp+BLw/0YZUlyXwO57AjoG7Skz4fVLBhZopFkAAy2NZ+YA27UJVwD4WDpEbcnnFZNwsbbr4HQ7zPE1VcIm8rHHLZpesbudEHVr6+rFUVXmh8olfG3nsyFCOocKThSAAAAAElFTkSuQmCC"
+        }
+      }
+    ]
   },
 
   // The roles which the employee performs
