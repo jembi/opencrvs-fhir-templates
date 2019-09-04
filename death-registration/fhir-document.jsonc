@@ -270,6 +270,10 @@
           {
             "url": "http://opencrvs.org/specs/extension/migrant-status",
             "valueString": "FOREIGN_RESIDENT | STUDENT | ASYLUM_SEEKER | RESIDENT | VISITOR | TRANSIENT | REFUGEE | OTHER"
+          },
+          {
+            "url": "http://opencrvs.org/specs/extension/patient-occupation",
+            "valueString": "FOREIGN_RESIDENT | STUDENT | ASYLUM_SEEKER | RESIDENT | VISITOR | TRANSIENT | REFUGEE | OTHER"
           }
         ],
         "link": [
