@@ -330,7 +330,7 @@
           },
           {
             "url": "http://opencrvs.org/specs/extension/patient-occupation",
-            "valueString": "FOREIGN_RESIDENT | STUDENT | ASYLUM_SEEKER | RESIDENT | VISITOR | TRANSIENT | REFUGEE | OTHER"
+            "valueString": "Any Occupation"
           }
         ],
         "link": [
