@@ -17,9 +17,6 @@
         "given": ["Charlton", "Joseph"]
       }
     ],
-<<<<<<< HEAD
-    "gender": "male"
-=======
     "gender": "male",
     "extension": [
       {
@@ -38,7 +35,6 @@
         }
       }
     ]
->>>>>>> master
   },
 
   // The roles which the employee performs
