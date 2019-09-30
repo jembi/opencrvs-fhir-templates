@@ -659,7 +659,7 @@
         "valueDateTime": "2014-01-28" // previous birth date
       }
     },
-    // Obs - For Legal Guardian / Infprmant only registrations - Reason mother is not applying
+    // Obs - For Legal Guardian / Informant only registrations - Reason mother is not applying
     {
       "fullUrl": "urn:uuid:<uuid>",
       "resource": {
@@ -684,7 +684,7 @@
         "valueString": "" // Free text or the string: DECEASED
       }
     },
-    // Obs - For Legal Guardian / Infprmant only registrations - Reason father is not applying
+    // Obs - For Legal Guardian / Informant only registrations - Reason father is not applying
     {
       "fullUrl": "urn:uuid:<uuid>",
       "resource": {
@@ -709,7 +709,7 @@
         "valueString": "" // Free text or the string: DECEASED
       }
     },
-    // Obs - For Legal Guardian / Infprmant only registrations - Reason caregiver is not applying
+    // Obs - For Legal Guardian / Informant only registrations - Reason caregiver is not applying
     {
       "fullUrl": "urn:uuid:<uuid>",
       "resource": {
@@ -734,7 +734,7 @@
         "valueString": "" // Free text, or the string: DECEASED
       }
     },
-    // Obs - For Legal Guardian / Infprmant only registrations - Primary cargiver
+    // Obs - For Legal Guardian / Informant only registrations - Primary cargiver
     {
       "fullUrl": "urn:uuid:<uuid>",
       "resource": {
