@@ -659,6 +659,106 @@
         "valueDateTime": "2014-01-28" // previous birth date
       }
     },
+    // Obs - For Legal Guardian / Informant only registrations - Reason mother is not applying
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the birth encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "reason-mother-not-applying",
+              "display": "Reason for mother not applying"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference mother by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as birthdate
+        "valueString": "" // Free text or the string: DECEASED
+      }
+    },
+    // Obs - For Legal Guardian / Informant only registrations - Reason father is not applying
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the birth encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "reason-father-not-applying",
+              "display": "Reason for father not applying"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference father by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as birthdate
+        "valueString": "" // Free text or the string: DECEASED
+      }
+    },
+    // Obs - For Legal Guardian / Informant only registrations - Reason caregiver is not applying
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the birth encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "reason-caregiver-not-applying",
+              "display": "Reason for caregiver not applying"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference caregiver by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as birthdate
+        "valueString": "" // Free text, or the string: DECEASED
+      }
+    },
+    // Obs - For Legal Guardian / Informant only registrations - Primary cargiver
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "context": {
+          "reference": "Encounter/123" // the birth encounter
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://opencrvs.org/specs/obs-type",
+              "code": "primary-caregiver",
+              "display": "Primary caregiver reference"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/123" // reference primary caregiver by fullUrl
+        },
+        "effectiveDateTime": "2016-03-28", // same as birthdate
+        "valueString": "MOTHER_AND_FATHER | MOTHER | FATHER | INFORMANT | LEGAL_GUARDIAN | OTHER"
+      }
+    },
 
     // Supporting documents uploads, referenced from Composition section
     {
@@ -795,7 +895,7 @@
             "value": "1"
           },
           {
-            "system": "http://opencrvs.org/specs/id/bbs-code",
+            "system": "http://opencrvs.org/specs/id/statistical-code",
             "value": "04"
           },
           {

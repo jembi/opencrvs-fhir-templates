@@ -1,11 +1,9 @@
 {
   "id": "123",
   "resourceType": "Location",
-  "identifier": [
-    { "system": "http://opencrvs.org/specs/id/a2i-internal-id", "value": "1" }
-  ],
+  "identifier": [],
   "name": "Barisal", // English name
-  "alias": ["বরিশাল"], // Bangla name in element 0
+  "alias": ["বরিশাল"], // Secondary language name in element
   "status": "active",
   "mode": "instance",
   "partOf": {
@@ -15,7 +13,7 @@
     "coding": [
       {
         "system": "http://opencrvs.org/specs/location-type",
-        "code": "CRVS_OFFICE | HEALTH_FACILITY" // Health facility used to track place of birth or death
+        "code": "CRVS_OFFICE | HEALTH_FACILITY" // Location description
       }
     ]
   },
