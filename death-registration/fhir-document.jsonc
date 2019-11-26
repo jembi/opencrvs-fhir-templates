@@ -73,6 +73,57 @@
           },
 
           {
+            "title": "Mother's details",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/specs/sections",
+                "code": "mother-details"
+              },
+              "text": "Mother's details"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to a RelatedPerson resource contained below, by fullUrl
+              }
+            ]
+          },
+
+          {
+            "title": "Father's details",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/specs/sections",
+                "code": "father-details"
+              },
+              "text": "Father's details"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to a RelatedPerson resource contained below, by fullUrl
+              }
+            ]
+          },
+
+          {
+            "title": "Spouse's details",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/specs/sections",
+                "code": "spouse-details"
+              },
+              "text": "Spouse's details"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to a RelatedPerson resource contained below, by fullUrl
+              }
+            ]
+          },
+
+          {
             "title": "Death Encounter",
             "code": {
               "coding": {
@@ -162,7 +213,7 @@
       }
     },
 
-    // Example Patient resource that links to deceased, mother and father (in the case of foetal death) details - not all fields apply for each
+    // Example Patient resource that links to deceased, mother, father, spouse and informant (in the case of foetal death) details - not all fields apply for each
     {
       "fullUrl": "urn:uuid:<uuid>",
       "resource": {
@@ -296,6 +347,57 @@
           "coding": {
             "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
             "code": "<see url for codes>" // or string for unsupported other
+          }
+        },
+        "patient": {
+          "reference": "Patient/123" // reference to deceased
+        }
+      }
+    },
+
+    // Related Person for deceased's mother (ignore this entry if informant === mother)
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "relationship": {
+          "coding": {
+            "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
+            "code": "MOTHER"
+          }
+        },
+        "patient": {
+          "reference": "Patient/123" // reference to deceased
+        }
+      }
+    },
+
+    // Related Person for deceased's father (ignore this entry if informant === father)
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "relationship": {
+          "coding": {
+            "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
+            "code": "FATHER"
+          }
+        },
+        "patient": {
+          "reference": "Patient/123" // reference to deceased
+        }
+      }
+    },
+
+    // Related Person for deceased's spouse (ignore this entry if informant === spouse)
+    {
+      "fullUrl": "urn:uuid:<uuid>",
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "relationship": {
+          "coding": {
+            "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
+            "code": "SPOUSE"
           }
         },
         "patient": {
