@@ -355,57 +355,6 @@
       }
     },
 
-    // Related Person for deceased's mother (ignore this entry if informant === mother)
-    {
-      "fullUrl": "urn:uuid:<uuid>",
-      "resource": {
-        "resourceType": "RelatedPerson",
-        "relationship": {
-          "coding": {
-            "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
-            "code": "MOTHER"
-          }
-        },
-        "patient": {
-          "reference": "Patient/123" // reference to deceased
-        }
-      }
-    },
-
-    // Related Person for deceased's father (ignore this entry if informant === father)
-    {
-      "fullUrl": "urn:uuid:<uuid>",
-      "resource": {
-        "resourceType": "RelatedPerson",
-        "relationship": {
-          "coding": {
-            "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
-            "code": "FATHER"
-          }
-        },
-        "patient": {
-          "reference": "Patient/123" // reference to deceased
-        }
-      }
-    },
-
-    // Related Person for deceased's spouse (ignore this entry if informant === spouse)
-    {
-      "fullUrl": "urn:uuid:<uuid>",
-      "resource": {
-        "resourceType": "RelatedPerson",
-        "relationship": {
-          "coding": {
-            "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
-            "code": "SPOUSE"
-          }
-        },
-        "patient": {
-          "reference": "Patient/123" // reference to deceased
-        }
-      }
-    },
-
     // Supporting documents uploads, referenced from Composition section
     {
       "fullUrl": "urn:uuid:xxx",
