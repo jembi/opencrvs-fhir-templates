@@ -141,6 +141,26 @@
           },
 
           {
+            "title": "Death Correction Encounters",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/specs/sections",
+                "code": "death-correction-encounters"
+              },
+              "text": "Death correction encounters"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to a correction Encounter resource that the correction Task will be linked to 
+              },
+              {
+                "reference": "urn:uuid:xxx" // reference to a correction Encounter resource that the correction Task will be linked to 
+              }
+            ]
+          },
+
+          {
             "title": "Supporting documents",
             "code": {
               "coding": {
