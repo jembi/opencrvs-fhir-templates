@@ -127,6 +127,26 @@
           },
 
           {
+            "title": "Birth Correction Encounters",
+            "code": {
+              "coding": {
+                "system": "http://opencrvs.org/specs/sections",
+                "code": "birth-correction-encounters"
+              },
+              "text": "Birth correction encounters"
+            },
+            "text": "",
+            "entry": [
+              {
+                "reference": "urn:uuid:xxx" // reference to a correction Encounter resource that the correction Task will be linked to 
+              },
+              {
+                "reference": "urn:uuid:xxx" // reference to a correction Encounter resource that the correction Task will be linked to 
+              }
+            ]
+          },
+
+          {
             "title": "Supporting documents",
             "code": {
               "coding": {
